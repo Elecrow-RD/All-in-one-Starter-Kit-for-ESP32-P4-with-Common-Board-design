@@ -11,9 +11,8 @@ Check whether the materials on the PCBA board are defective. Such as less materi
 
 #### 2.Flash the firmware 
 
-##### Step1 Connect the ESP32 display to the laptop/PC with USB-C cable. The power indicator will light up.
+##### Step1 Connect the ESP32 P4 to the laptop/PC with USB-C cable. The power indicator will light up.
 
-![flash01](./flash01.jpg)
 
 ##### Step2 Open the flash download tool. 
 
