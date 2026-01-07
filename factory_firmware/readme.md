@@ -22,9 +22,10 @@ Check whether the materials on the PCBA board are defective. Such as less materi
 
 
 
-For the  Crowpanel Advance HMI ESP32 AI Display, the chip select ESP32-S3:
+For the  Crowpanel Advance HMI ESP32 AI Display, the chip select ESP32-P4:
 
-![flash03](./flash03.jpg)
+<img width="219" height="212" alt="image" src="https://github.com/user-attachments/assets/aba4d454-b576-4804-8669-8b9a84136e08" />
+
 
 ##### Step3
 
@@ -34,13 +35,13 @@ For the  Crowpanel Advance HMI ESP32 AI Display, the chip select ESP32-S3:
 
 ②Enter the address: 
 
-boot_app0.bin------0xe000
+bootloader-0x2000.bin-------0x2000
 
-xxxx.ino.bin--------0x10000
+esp32p4_dev_kits_ui-0x10000.bin----0x10000
 
-xxxx.ino.bootloader.bin------0x0
+partition-table-0x8000.bin-----0x8000
 
-xxxx.ino.partitions.bin-------0x8000
+storage-0x910000.bin-------0x910000
 
 
 
