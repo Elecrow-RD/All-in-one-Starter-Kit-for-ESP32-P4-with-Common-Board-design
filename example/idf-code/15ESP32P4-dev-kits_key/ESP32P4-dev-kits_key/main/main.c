@@ -17,7 +17,6 @@ adc_oneshot_unit_handle_t adc_handle = NULL;
 #ifdef CONFIG_BSP_LED_ENABLED
 void key_task(void *param)
 {
-    esp_err_t err = ESP_OK;
     while (1)
     {
         /*Process key events based on the current key_status*/

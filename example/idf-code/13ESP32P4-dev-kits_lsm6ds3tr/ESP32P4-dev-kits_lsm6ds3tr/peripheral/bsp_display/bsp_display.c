@@ -152,6 +152,7 @@ static esp_err_t display_port_init(void)
     return err;
 }
 
+#if 0
 static void display_port_deinit(void)
 {
     if (esp_lcd_panel_del(panel_handle) != ESP_OK)
@@ -167,6 +168,7 @@ static void display_port_deinit(void)
 
     set_lcd_blight(0);
 }
+#endif
 
 static esp_err_t lvgl_init()
 {

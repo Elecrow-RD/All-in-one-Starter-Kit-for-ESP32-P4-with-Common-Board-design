@@ -65,21 +65,20 @@ void app_main(void)
         Rx_Bytes = uart_read_bytes(UART_NUM_0, data, 512, pdMS_TO_TICKS(1000)); /*UART read bytes from UART buffer*/
         if (Rx_Bytes > 0)
         {
-            data[Rx_Bytes] = 0; /*Append \0 at the end of the string*/
-            MAIN_INFO("read data: %s, length: %d", data, Rx_Bytes);
-            if (strcmp(data, CMD_LED_ON) == 0) /*Compare whether the string matches the preset command*/
+            /* Be safe, check just for the pattern, and ignore extra data, newline or cr */
+            if (strncmp(data, CMD_LED_ON, strlen(CMD_LED_ON)) == 0)
             {
                 MAIN_INFO("Received the LED_ON command");
                 set_led_state(false); /*Set the Corresponding Output Level of GPIO*/
             }
-            else if (strcmp(data, CMD_LED_OFF) == 0) /*Compare whether the string matches the preset command*/
+            else if (strncmp(data, CMD_LED_OFF, strlen(CMD_LED_OFF)) == 0)
             {
                 MAIN_INFO("Received the LED_OFF command");
                 set_led_state(true); /*Set the Corresponding Output Level of GPIO*/
             }
             else
             {
-                MAIN_ERROR("Unknown Command: %s", data);
+                MAIN_ERROR("Unknown Command of length %d", Rx_Bytes);
             }
         }
     }
