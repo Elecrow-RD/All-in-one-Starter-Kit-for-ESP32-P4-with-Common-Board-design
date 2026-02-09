@@ -95,4 +95,7 @@ C:\Users\Documents\Arduino\libraries\
 
 ### 7,Pin definition
 
+**DSI**
+<img width="427" height="695" alt="image" src="https://github.com/user-attachments/assets/8281ad80-b899-449b-96d8-22d0fff788d9" />
+
 
