@@ -1,4 +1,4 @@
-#ifndef _BSP_I2c_H_
+#ifndef _BSP_I2C_H_
 #define _BSP_I2C_H_
 
 /*————————————————————————————————————————Header file declaration————————————————————————————————————————*/
