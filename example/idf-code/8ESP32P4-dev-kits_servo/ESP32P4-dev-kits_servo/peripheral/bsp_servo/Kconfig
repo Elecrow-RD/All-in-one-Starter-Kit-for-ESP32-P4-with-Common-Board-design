@@ -1,4 +1,5 @@
 menu "BSP SERVO Setup"
+
     config BSP_SERVO_ENABLED
         bool "Enable SERVO config"
         default n

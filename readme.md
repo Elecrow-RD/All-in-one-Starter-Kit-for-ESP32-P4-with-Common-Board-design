@@ -31,7 +31,7 @@
 | Button                           | Rest Button                                                  |
 | LED Indicator                    | I/O port working status indicator light                      |
 | **Other**                        |                                                              |
-| Size                             | 195*170*46（mm）                                             |
+| Size                             | 195\*170*46（mm）                                            |
 | Material                         | PP Plastic                                                   |
 | Input                            | 5v                                                           |
 | Weight                           | 600g                                                         |
@@ -55,12 +55,13 @@ C:\Users\Documents\Arduino\libraries\
 
 2.Open the Arduino IDE
 
-![1](https://github.com/user-attachments/assets/17b4e9af-a863-4bfd-839e-be94f00a33ad)
+<img width="377" height="579" alt="7739691367693(1)" src="https://github.com/user-attachments/assets/22315d81-9c54-4e66-8a24-9d8f98a2da0e" />
 
 
 3.Open the code configuration environment and burn it
 
-![3](https://github.com/user-attachments/assets/1a58d8ff-616b-4b71-9465-c2dac03f3399)
+<img width="696" height="901" alt="17742563652932" src="https://github.com/user-attachments/assets/afd9f4b7-db8e-4cc0-a6c4-a514e849b9dd" />
+
 
 
 
@@ -72,7 +73,10 @@ C:\Users\Documents\Arduino\libraries\
 
 
 2.In the IDF plug-in, select the port, then compile and flash
-![5](https://github.com/user-attachments/assets/76b6182f-0998-4496-920d-d262a5142df3)
+
+<img width="1363" height="721" alt="image" src="https://github.com/user-attachments/assets/bad461b0-11f0-441b-b4e3-eeb4521025d4" />
+
+
 
 
 
@@ -93,6 +97,6 @@ C:\Users\Documents\Arduino\libraries\
 |--libraries: Includes necessary libraries required for compiling and running the project. These libraries provide drivers and additional functionalities for the hardware.
 
 
-### 7,Pin definition
+### 
 
 

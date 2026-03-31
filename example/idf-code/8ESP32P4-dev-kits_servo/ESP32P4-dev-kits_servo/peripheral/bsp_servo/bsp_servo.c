@@ -8,78 +8,84 @@
 /*—————————————————————————————————————————Functional function———————————————————————————————————————————*/
 #ifdef CONFIG_BSP_SERVO_ENABLED
 
+static inline int16_t clamp_i16(int16_t val, int16_t min, int16_t max)
+{
+    if (val < min)
+        return min;
+    if (val > max)
+        return max;
+    return val;
+}
+
+static uint32_t calculate_servo_duty(int degree)
+{
+    degree = clamp_i16(degree, 0, SERVO_MAX_DEGREE);
+    uint32_t pulsewidth = SERVO_MIN_PULSEWIDTH_US + (((SERVO_MAX_PULSEWIDTH_US - SERVO_MIN_PULSEWIDTH_US) * degree) / SERVO_MAX_DEGREE);
+    uint32_t duty = (pulsewidth * (1 << 14)) / 20000;
+    return duty;
+}
+
+bool parse_angle_command(const char *str, int *out_angle)
+{
+    if (str == NULL || strlen(str) == 0)
+        return false;
+
+    if (str[0] == 'a')
+    {
+        *out_angle = atoi(&str[1]);
+        return true;
+    }
+    return false;
+}
+
 esp_err_t servo_init()
 {
     esp_err_t err = ESP_OK;
     const gpio_config_t gpio_cofig = {
-        .pin_bit_mask = 1ULL << SERVO_GPIO, /* GPIO pin: set with bit mask, each bit maps to a GPIO */
-        .mode = GPIO_MODE_OUTPUT,           /* GPIO mode: set input/output mode                     */
-        .pull_up_en = false,                /* GPIO pull-up                                         */
-        .pull_down_en = false,              /* GPIO pull-down                                       */
-        .intr_type = GPIO_INTR_DISABLE,     /* GPIO interrupt type                                  */
+        .pin_bit_mask = 1ULL << SERVO_GPIO,
+        .mode = GPIO_MODE_OUTPUT,
+        .pull_up_en = false,
+        .pull_down_en = false,
+        .intr_type = GPIO_INTR_DISABLE,
     };
-    err = gpio_config(&gpio_cofig); /*Configure GPIO*/
+    err = gpio_config(&gpio_cofig);
     if (err != ESP_OK)
         return err;
-
     const ledc_timer_config_t servo_timer_config = {
-        .clk_cfg = LEDC_USE_PLL_DIV_CLK,      /* Configure LEDC source clock from ledc_clk_cfg_t*/
-        .duty_resolution = LEDC_TIMER_11_BIT, /*LEDC channel duty resolution*/
-        .freq_hz = 50,                        /*LEDC timer frequency (Hz)*/
-        .speed_mode = LEDC_LOW_SPEED_MODE,    /*LEDC speed speed_mode, high-speed mode (only exists on esp32) or low-speed mode*/
-        .timer_num = LEDC_TIMER_1,            /* The timer source of channel (0 - LEDC_TIMER_MAX-1)*/
+        .clk_cfg = LEDC_USE_PLL_DIV_CLK,
+        .duty_resolution = LEDC_TIMER_14_BIT,
+        .freq_hz = 50,
+        .speed_mode = LEDC_LOW_SPEED_MODE,
+        .timer_num = LEDC_TIMER_1,
     };
     const ledc_channel_config_t channel_config = {
-        .gpio_num = SERVO_GPIO,            /*the LEDC output gpio_num*/
-        .speed_mode = LEDC_LOW_SPEED_MODE, /*LEDC speed speed_mode, high-speed mode (only exists on esp32) or low-speed mode*/
-        .channel = LEDC_CHANNEL_1,         /*LEDC channel (0 - LEDC_CHANNEL_MAX-1)*/
-        .intr_type = LEDC_INTR_DISABLE,    /*configure interrupt, Fade interrupt enable  or Fade interrupt disable*/
-        .timer_sel = LEDC_TIMER_1,         /*Select the timer source of channel (0 - LEDC_TIMER_MAX-1)*/
-        .duty = 154,                       /*EDC channel duty, the range of duty setting is [0, (2**duty_resolution)] */
-        .hpoint = 0,                       /*LEDC channel hpoint value, the range is [0, (2**duty_resolution)-1]*/
+        .gpio_num = SERVO_GPIO,
+        .speed_mode = LEDC_LOW_SPEED_MODE,
+        .channel = LEDC_CHANNEL_1,
+        .intr_type = LEDC_INTR_DISABLE,
+        .timer_sel = LEDC_TIMER_1,
+        .duty = calculate_servo_duty(0),
+        .hpoint = 0,
     };
-    err = ledc_timer_config(&servo_timer_config); /*LEDC timer configuration Configure LEDC timer with the given source timer/frequency(Hz)/duty_resolution*/
+    err = ledc_timer_config(&servo_timer_config);
     if (err != ESP_OK)
         return err;
-    err = ledc_channel_config(&channel_config); /*LEDC channel configuration Configure LEDC channel with the given channel/output gpio_num/interrupt/source timer/frequency(Hz)/LEDC dut*/
+    err = ledc_channel_config(&channel_config);
     if (err != ESP_OK)
         return err;
     return err;
 }
 
-/*speed -  (0 - 4(fastest)) */
-esp_err_t set_servo_status(servo_dir servo_dir_status, int speed)
+esp_err_t set_servo_angle(int degree)
 {
     esp_err_t err = ESP_OK;
-    if ((speed < 0) || (speed > 4)) /*The speed is not within the specified range*/
-        return ESP_ERR_INVALID_ARG;
-    switch (servo_dir_status) /**/
-    {
-    case stop:
-        err = ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_1, 154); /*LEDC set duty*/
-        if (err != ESP_OK)
-            return err;
-        err = ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_1); /*LEDC update channel parameters*/
-        if (err != ESP_OK)
-            return err;
-        break;
-    case forward_dir:
-        err = ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_1, (132 - (speed * 20)));
-        if (err != ESP_OK)
-            return err;
-        err = ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_1);
-        if (err != ESP_OK)
-            return err;
-        break;
-    case reverse_dir:
-        err = ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_1, (speed * 20) + 176);
-        if (err != ESP_OK)
-            return err;
-        err = ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_1);
-        if (err != ESP_OK)
-            return err;
-        break;
-    }
+    uint32_t duty = calculate_servo_duty(degree);
+    err = ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_1, duty);
+    if (err != ESP_OK)
+        return err;
+    err = ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_1);
+    if (err != ESP_OK)
+        return err;
     return err;
 }
 

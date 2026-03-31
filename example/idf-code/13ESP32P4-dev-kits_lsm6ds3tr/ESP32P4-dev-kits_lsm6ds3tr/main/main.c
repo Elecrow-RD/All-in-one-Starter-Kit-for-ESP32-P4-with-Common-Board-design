@@ -3,6 +3,8 @@
 /*——————————————————————————————————————Header file declaration end——————————————————————————————————————*/
 
 /*——————————————————————————————————————————Variable declaration—————————————————————————————————————————*/
+#define DPS_TO_RADS (3.14159265f / 180.0f)
+#define GRAVITY_CONSTANT 9.80665f
 #ifdef CONFIG_BSP_LSM6DS3_SENSOR_ENABLED
 TaskHandle_t read_lsm6ds3;
 #ifdef CONFIG_BSP_DISPLAY_ENABLED
@@ -55,10 +57,10 @@ void update_lsm6ds3_value(lsm6ds3tr data)
     {
         char buffer_acc[80];
         char buffer_gry[80];
-        snprintf(buffer_acc, sizeof(buffer_acc), "acc_x: %.2f m/s2 acc_y = %.2f m/s2 acc_z = %.2f m/s2", data.acc_x, data.acc_y, data.acc_z);    /*Format the data into a string*/
-        snprintf(buffer_gry, sizeof(buffer_gry), "gry_x: %.2f rad/s gry_y = %.2f rad/s gry_z = %.2f rad/s", data.gry_x, data.gry_y, data.gry_z); /*Format the data into a string*/
-        lv_label_set_text(lsm6ds3_acc_data, buffer_acc);                                                                                         /*Set a new text for a label*/
-        lv_label_set_text(lsm6ds3_gry_data, buffer_gry);                                                                                         /*Set a new text for a label*/
+        snprintf(buffer_acc, sizeof(buffer_acc), "acc_x: %.2f m/s2 acc_y = %.2f m/s2 acc_z = %.2f m/s2", data.acc_x * GRAVITY_CONSTANT, data.acc_y * GRAVITY_CONSTANT, data.acc_z * GRAVITY_CONSTANT); /*Format the data into a string*/
+        snprintf(buffer_gry, sizeof(buffer_gry), "gry_x: %.2f rad/s gry_y = %.2f rad/s gry_z = %.2f rad/s", data.gry_x * DPS_TO_RADS, data.gry_y * DPS_TO_RADS, data.gry_z * DPS_TO_RADS);             /*Format the data into a string*/
+        lv_label_set_text(lsm6ds3_acc_data, buffer_acc);                                                                                                                                               /*Set a new text for a label*/
+        lv_label_set_text(lsm6ds3_gry_data, buffer_gry);                                                                                                                                               /*Set a new text for a label*/
     }
 }
 

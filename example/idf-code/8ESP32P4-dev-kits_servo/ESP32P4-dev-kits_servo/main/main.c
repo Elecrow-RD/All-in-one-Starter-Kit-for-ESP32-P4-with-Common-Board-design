@@ -54,14 +54,9 @@ void app_main(void)
 #ifdef CONFIG_BSP_SERVO_ENABLED
     while (1)
     {
-        for (uint8_t i = 0; i < 5; i++) /*Execute control with different speeds in a loop*/
-        {
-            set_servo_status(forward_dir, i); /*Set the servo motor direction and speed*/
-            vTaskDelay(2000 / portTICK_PERIOD_MS);
-            set_servo_status(reverse_dir, i); /*Set the servo motor direction and speed*/
-            vTaskDelay(2000 / portTICK_PERIOD_MS);
-        }
-        set_servo_status(stop, 1); /*Set the servo motor stop*/
+        set_servo_angle(180); /*Set the servo motor 180 degrees*/
+        vTaskDelay(2000 / portTICK_PERIOD_MS);
+        set_servo_angle(0); /*Set the servo motor 0 degrees*/
         vTaskDelay(2000 / portTICK_PERIOD_MS);
     }
 #endif

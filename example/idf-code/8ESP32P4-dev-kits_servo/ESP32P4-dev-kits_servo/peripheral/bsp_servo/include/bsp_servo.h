@@ -2,10 +2,14 @@
 #define _BSP_SERVO_H_
 
 /*————————————————————————————————————————Header file declaration————————————————————————————————————————*/
-#include "esp_log.h"     //References for LOG Printing Function-related API Functions
-#include "esp_err.h"     //References for Error Type Function-related API Functions
-#include "driver/gpio.h" //References for GPIO Function-related API Functions
-#include "driver/ledc.h" //References for LEDC PWM Function-related API Functions
+#include <string.h>
+#include <stdint.h>
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "esp_log.h"
+#include "esp_err.h"
+#include "driver/gpio.h"
+#include "driver/ledc.h"
 /*——————————————————————————————————————Header file declaration end——————————————————————————————————————*/
 
 /*——————————————————————————————————————————Variable declaration—————————————————————————————————————————*/
@@ -16,18 +20,14 @@
 
 #ifdef CONFIG_BSP_SERVO_ENABLED
 
-#define SERVO_GPIO CONFIG_SERVO_GPIO // Servo GPIO
+#define SERVO_GPIO CONFIG_SERVO_GPIO
+#define SERVO_MIN_PULSEWIDTH_US 500  // The pulse width corresponding to 0 degree
+#define SERVO_MAX_PULSEWIDTH_US 2500 // The pulse width corresponding to 180 degree
+#define SERVO_MAX_DEGREE 180
 
-typedef enum
-{
-    forward_dir = 1,
-    reverse_dir,
-    stop,
-} servo_dir; /*Servo Motor Direction Type*/
-
-esp_err_t servo_init();                                            /* Initialize the GPIO Pin and PWM channel of the LED*/
-esp_err_t set_servo_status(servo_dir servo_dir_status, int speed); /*Set the servo motor direction and speed*/
-
+esp_err_t servo_init();
+esp_err_t set_servo_angle(int degree);
+bool parse_angle_command(const char *str, int *out_angle);
 #endif
 /*———————————————————————————————————————Variable declaration end——————————————-—————————————————————————*/
 #endif
