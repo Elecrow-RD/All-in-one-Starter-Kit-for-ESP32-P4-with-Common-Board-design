@@ -127,14 +127,17 @@ IO25;
 <img width="911" height="508" alt="image" src="https://github.com/user-attachments/assets/54b352c6-cf55-4192-b52b-ddec2e89cb40" />
 
 9,HALL SENSOR
+
 IO7;
 
 10,Custom key
+
 IO16;
 
 <img width="934" height="378" alt="image" src="https://github.com/user-attachments/assets/11aa1b4b-1d3d-45c4-8af9-8a24ed948e92" />
 
 11,Touch Sensor
+
 IO2;
 
 12,MIC
@@ -147,9 +150,11 @@ IO2;
 <img width="338" height="254" alt="image" src="https://github.com/user-attachments/assets/e23b1695-66dd-431e-9cc7-46f580655f5d" />
 
 14,GAS-MQ2
+
 IO17;
 
 15,Relay
+
 IO42;
 
 16,CSI Interface
