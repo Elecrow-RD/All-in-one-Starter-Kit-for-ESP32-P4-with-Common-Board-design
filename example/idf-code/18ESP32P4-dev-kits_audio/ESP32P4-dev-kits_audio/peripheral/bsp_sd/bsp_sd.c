@@ -91,7 +91,6 @@ esp_err_t write_file(const char *filename, char *data, size_t size)
 
 esp_err_t write_file_seek(const char *filename, void *data, size_t size, int32_t seek)
 {
-    size_t success_size = 0;
     FILE *file = fopen(filename, "r+b"); /*Open file in binary read and write mode*/
     if (!file)
     {
