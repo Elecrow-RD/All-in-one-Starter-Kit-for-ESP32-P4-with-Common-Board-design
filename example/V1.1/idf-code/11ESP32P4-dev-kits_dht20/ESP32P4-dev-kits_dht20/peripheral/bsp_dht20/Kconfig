@@ -1,0 +1,12 @@
+menu "BSP DHT20 Setup"
+
+    config BSP_DHT20_SENSOR_ENABLED
+        bool "Enable DHT20 Temperature and Humidity sensor"
+        depends on BSP_I2C_ENABLED
+
+    if BSP_DHT20_SENSOR_ENABLED
+        config DHT20_I2C_ADDRESS
+            hex "DHT20 I2C Address"
+            default 0x38
+    endif
+endmenu

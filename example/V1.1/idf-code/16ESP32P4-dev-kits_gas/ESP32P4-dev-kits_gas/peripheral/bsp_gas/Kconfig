@@ -1,0 +1,12 @@
+menu "BSP GAS Setup"
+
+    config BSP_GAS_ENABLED
+        bool "Enable GAS"
+        default n
+
+    if BSP_GAS_ENABLED
+        config GAS_CHANNEL
+            int "ADC CHANNEL For GAS"
+            default 1
+    endif
+endmenu

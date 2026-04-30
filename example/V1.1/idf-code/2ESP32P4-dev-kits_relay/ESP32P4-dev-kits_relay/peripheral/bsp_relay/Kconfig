@@ -1,0 +1,12 @@
+menu "BSP RELAY Setup"
+
+    config BSP_RELAY_ENABLED
+        bool "Enable RELAY"
+        default n
+
+    if BSP_RELAY_ENABLED
+        config RELAY_GPIO
+            int "GPIO For RELAY"
+            default 42
+    endif
+endmenu

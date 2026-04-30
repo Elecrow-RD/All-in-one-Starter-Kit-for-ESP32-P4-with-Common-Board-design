@@ -1,0 +1,12 @@
+menu "BSP BH1750 Setup"
+
+    config BSP_BH1750_SENSOR_ENABLED
+        bool "Enable BH1750 illumination sensor"
+        depends on BSP_I2C_ENABLED
+
+    if BSP_BH1750_SENSOR_ENABLED
+        config BH1750_I2C_ADDRESS
+            hex "BH1750 I2C Address"
+            default 0x5C
+    endif
+endmenu

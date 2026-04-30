@@ -1,0 +1,12 @@
+menu "BSP INDEPENDENT TOUCH Setup"
+
+    config BSP_INDEPENDENT_TOUCH_ENABLED
+        bool "Enable INDEPENDENT TOUCH"
+        default n
+
+    if BSP_INDEPENDENT_TOUCH_ENABLED
+        config INDEPENDENT_TOUCH_GPIO
+            int "GPIO For INDEPENDENT TOUCH"
+            default 2
+    endif
+endmenu

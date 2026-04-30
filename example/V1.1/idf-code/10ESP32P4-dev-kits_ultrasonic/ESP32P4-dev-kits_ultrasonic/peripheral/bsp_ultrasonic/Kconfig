@@ -1,0 +1,15 @@
+menu "BSP ULTRASONIC Setup"
+    config BSP_ULTRASONIC_ENABLED
+        bool "Enable ULTRASONIC config"
+        default n
+
+    if BSP_ULTRASONIC_ENABLED
+        config ULTRASONIC_GPIO_ECHO
+            int "GPIO For ULTRASONIC ECHO"
+            default 12
+
+        config ULTRASONIC_GPIO_TRIG
+            int "GPIO For ULTRASONIC TRIG"
+            default 13
+    endif
+endmenu

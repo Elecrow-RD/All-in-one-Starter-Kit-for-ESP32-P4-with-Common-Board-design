@@ -1,0 +1,12 @@
+menu "BSP HALL Setup"
+
+    config BSP_HALL_ENABLED
+        bool "Enable HALL"
+        default n
+
+    if BSP_HALL_ENABLED
+        config HALL_GPIO
+            int "GPIO For HALL"
+            default 7
+    endif
+endmenu

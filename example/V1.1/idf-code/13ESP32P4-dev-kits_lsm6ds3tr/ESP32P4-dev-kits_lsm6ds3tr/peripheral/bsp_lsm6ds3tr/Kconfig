@@ -1,0 +1,11 @@
+menu "BSP LSM6DS3 Setup"
+    config BSP_LSM6DS3_SENSOR_ENABLED
+        bool "Enable LSM6DS3TR sensor"
+        depends on BSP_I2C_ENABLED
+
+    if BSP_LSM6DS3_SENSOR_ENABLED
+        config LSM6DS3_I2C_ADDRESS
+            hex "LSM6DS3TR I2C Address"
+            default 0x6B
+    endif
+endmenu

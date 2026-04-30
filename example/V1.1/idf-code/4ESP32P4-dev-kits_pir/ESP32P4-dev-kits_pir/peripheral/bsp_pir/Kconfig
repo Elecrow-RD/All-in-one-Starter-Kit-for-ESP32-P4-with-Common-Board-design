@@ -1,0 +1,12 @@
+menu "BSP PIR Setup"
+
+    config BSP_PIR_ENABLED
+        bool "Enable PIR config"
+        default n
+
+    if BSP_PIR_ENABLED
+        config PIR_GPIO
+            int "GPIO For PIR"
+            default 24
+    endif
+endmenu

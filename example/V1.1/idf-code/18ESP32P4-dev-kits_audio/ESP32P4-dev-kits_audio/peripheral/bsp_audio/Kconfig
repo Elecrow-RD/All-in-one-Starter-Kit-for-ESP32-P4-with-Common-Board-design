@@ -1,0 +1,25 @@
+menu "BSP AUDIO Setup"
+
+    config BSP_AUDIO_ENABLED
+        bool "Enable AUDIO"
+        default n
+
+    if BSP_AUDIO_ENABLED
+
+        config AUDIO_GPIO_LRCLK
+            int "GPIO For AUDIO LRCLK"
+            default 21
+
+        config AUDIO_GPIO_BCLK
+            int "GPIO For AUDIO BCLK"
+            default 22
+
+        config AUDIO_GPIO_SDATA
+            int "GPIO For AUDIO SDATA"
+            default 23
+        
+        config AUDIO_GPIO_CTRL
+            int "GPIO For AUDIO CTRL"
+            default 6
+    endif
+endmenu

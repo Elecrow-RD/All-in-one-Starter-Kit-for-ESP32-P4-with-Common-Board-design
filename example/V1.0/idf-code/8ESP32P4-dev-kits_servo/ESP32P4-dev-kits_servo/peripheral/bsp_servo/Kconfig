@@ -1,0 +1,11 @@
+menu "BSP SERVO Setup"
+    config BSP_SERVO_ENABLED
+        bool "Enable SERVO config"
+        default n
+
+    if BSP_SERVO_ENABLED
+        config SERVO_GPIO
+            int "GPIO For SERVO"
+            default 25
+    endif
+endmenu

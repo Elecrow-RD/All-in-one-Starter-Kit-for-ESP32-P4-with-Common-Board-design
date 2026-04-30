@@ -6,7 +6,8 @@
 
 |      | Hardware | Software | Remark |
 | ---- | -------- | -------- | ------ |
-| 1    | V1.0     | V1.0     | latest |
+| 1    | V1.0     | V1.0     | old |
+| 2    | V1.1     | V1.1     | latest |
 
 ### 3, product information
 
@@ -77,10 +78,6 @@ C:\Users\Documents\Arduino\libraries\
 <img width="1363" height="721" alt="image" src="https://github.com/user-attachments/assets/bad461b0-11f0-441b-b4e3-eeb4521025d4" />
 
 
-
-
-
-
 ### 6,Folder structure.
 |--3D file： Contains 3D model files (.stp) for the hardware. These files can be used for visualization, enclosure design, or integration into CAD software.
 
@@ -97,6 +94,76 @@ C:\Users\Documents\Arduino\libraries\
 |--libraries: Includes necessary libraries required for compiling and running the project. These libraries provide drivers and additional functionalities for the hardware.
 
 
-### 
+### 7,Pin definition
+1，Ultrasonic Sensor：
+
+<img width="370" height="138" alt="image" src="https://github.com/user-attachments/assets/e6a8b354-1124-4620-af22-ba4685f9069f" />
+
+2，LIGHT SENSOR
+
+<img width="676" height="374" alt="image" src="https://github.com/user-attachments/assets/f97fe070-47ac-44f4-bd7f-6a99e830d5a9" />
+
+3，LED
+
+<img width="941" height="483" alt="image" src="https://github.com/user-attachments/assets/0e140e54-709c-4a86-ac78-3b79fa6280a2" />
+
+4,Temperature & Humidity(DHT20)
+
+<img width="485" height="345" alt="image" src="https://github.com/user-attachments/assets/82d8b6d0-1c36-4596-a401-8bae135a51f6" />
+
+5,DSI
+
+<img width="847" height="658" alt="image" src="https://github.com/user-attachments/assets/51203bb7-09ba-4757-b013-a8ca0977f0c8" />
+
+6.PIR
+
+IO24；
+
+7.Servo Motor
+
+IO25;
+
+8,Accelerometer & Gyro
+
+<img width="911" height="508" alt="image" src="https://github.com/user-attachments/assets/54b352c6-cf55-4192-b52b-ddec2e89cb40" />
+
+9,HALL SENSOR
+
+IO7;
+
+10,Custom key
+
+IO16;
+
+<img width="934" height="378" alt="image" src="https://github.com/user-attachments/assets/11aa1b4b-1d3d-45c4-8af9-8a24ed948e92" />
+
+11,Touch Sensor
+
+IO2;
+
+12,MIC
+
+<img width="636" height="277" alt="image" src="https://github.com/user-attachments/assets/8917cfe5-cd1a-40b3-833e-83697b859c03" />
+
+13,Audio Interface
+
+
+<img width="338" height="254" alt="image" src="https://github.com/user-attachments/assets/e23b1695-66dd-431e-9cc7-46f580655f5d" />
+
+14,GAS-MQ2
+
+IO17;
+
+15,Relay
+
+IO42;
+
+16,CSI Interface
+
+<img width="771" height="631" alt="image" src="https://github.com/user-attachments/assets/d2f39423-e91d-4f06-a4ae-2515899ac755" />
+
+17,Wireless module
+
+<img width="744" height="381" alt="image" src="https://github.com/user-attachments/assets/4c0879a7-d457-4eae-8af7-aab551854165" />
 
 

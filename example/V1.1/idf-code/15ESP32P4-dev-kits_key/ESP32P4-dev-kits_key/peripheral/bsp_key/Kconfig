@@ -1,0 +1,12 @@
+menu "BSP KEY Setup"
+
+    config BSP_KEY_ENABLED
+        bool "Enable KEY"
+        default n
+
+    if BSP_KEY_ENABLED
+        config KEY_GPIO
+            int "GPIO For KEY"
+            default 16
+    endif
+endmenu

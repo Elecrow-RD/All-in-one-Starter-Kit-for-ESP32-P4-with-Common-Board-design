@@ -1,0 +1,20 @@
+menu "BSP MIC Setup"
+
+    config BSP_MIC_ENABLED
+        bool "Enable MIC"
+        default n
+
+    if BSP_MIC_ENABLED
+        config MIC_GPIO_CLK
+            int "GPIO For MIC CLK"
+            default 3
+
+        config MIC_GPIO_DATA
+            int "GPIO For MIC DATA"
+            default 4
+
+        config MIC_SAMPLE_RATE
+            int "PDM sample rate"
+            default 16000
+    endif
+endmenu

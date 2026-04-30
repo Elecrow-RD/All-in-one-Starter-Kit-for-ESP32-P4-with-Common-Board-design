@@ -1,0 +1,12 @@
+menu "BSP LED Setup"
+
+    config BSP_LED_ENABLED
+        bool "Enable LED"
+        default n
+
+    if BSP_LED_ENABLED
+        config LED_GPIO
+            int "GPIO For LED"
+            default 5
+    endif
+endmenu

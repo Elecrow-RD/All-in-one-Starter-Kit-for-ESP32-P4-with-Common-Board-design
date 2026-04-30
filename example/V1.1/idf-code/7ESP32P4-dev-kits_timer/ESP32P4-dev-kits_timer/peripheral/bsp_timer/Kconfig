@@ -1,0 +1,7 @@
+menu "BSP Timer Setup"
+
+    config BSP_TIMER_ENABLED
+        bool "Enable Timer"
+        default n
+
+endmenu

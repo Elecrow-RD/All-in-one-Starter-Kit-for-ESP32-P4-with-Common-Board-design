@@ -1,0 +1,30 @@
+menu "BSP SD Setup"
+
+    config BSP_SD_ENABLED
+        bool "Enable SD CARD"
+        default n
+
+    if BSP_SD_ENABLED
+
+        config FORMAT_IF_MOUNT_FAILED
+            bool "Format the card if mount failed"
+            default n
+            help
+                If this config item is set, format_if_mount_failed will be set to true and the card will be formatted if
+                the mount has failed.
+
+        config SD_GPIO_CLK
+            int "SDIO CLK GPIO number"
+            default 43
+
+        config SD_GPIO_CMD
+            int "SDIO CMD GPIO number"
+            default 44 
+
+        config SD_GPIO_D0
+            int "SDIO D0 GPIO number"
+            default 39
+
+    endif
+
+endmenu
