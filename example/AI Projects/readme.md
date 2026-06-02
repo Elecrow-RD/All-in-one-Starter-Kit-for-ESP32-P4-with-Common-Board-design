@@ -66,6 +66,18 @@ This means the compilation is successful:
 
 <img width="554" height="342" alt="image" src="https://github.com/user-attachments/assets/e08ef5f2-46f2-4fa3-b5fe-476ec2b92377" />
 
+Once the download is complete, start configuring the **Wi-Fi**:
+
+<img width="554" height="380" alt="image" src="https://github.com/user-attachments/assets/bc6a8386-cb5d-4c16-8269-f9c706490185" />
+
+① Connect your phone to the Wi-Fi network named “Xiaozhi-A0B5.” You will be automatically redirected to the Wi-Fi settings page. Enter the password for the Wi-Fi network you want to connect to, tap “Connect,” and the Wi-Fi setup is complete.
+
+<img width="442" height="837" alt="image" src="https://github.com/user-attachments/assets/56eeed58-afab-4f5e-96c5-e2d76c744453" />
+
+② A message indicating that the configuration was successful will appear.
+
+<img width="388" height="729" alt="image" src="https://github.com/user-attachments/assets/e5104868-a8e8-47a1-9ca7-ceb857a70f02" />
+
 11. After flashing is completed, when the device connects to Wi-Fi, the screen will display the verification code for connecting the device:
 
 <img width="515" height="300" alt="image" src="https://github.com/user-attachments/assets/64aabb4b-7c24-4d5b-bc2a-2b6011ade3ff" />
