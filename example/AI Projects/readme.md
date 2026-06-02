@@ -80,7 +80,7 @@ This means the compilation is successful:
 
 14. Click “Add Device” to add a device.
 
-<img width="554" height="130" alt="image" src="https://github.com/user-attachments/assets/bd4255f8-5be3-447d-9b56-fb2a6b84608c" />
+<img width="554" height="258" alt="image" src="https://github.com/user-attachments/assets/8fc96bfe-fb2d-45f2-b8c6-ddeeee3510c4" />
 
 15. Enter the device code, then click “Confirm”. Note that the device code here must be based on the output displayed on your own device.
 
